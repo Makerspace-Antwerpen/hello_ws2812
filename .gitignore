@@ -71,3 +71,6 @@ wifi_manager/doc/
 
 # Visual Studio Code
 .vscode/
+
+# Mac OSX
+.DS_Store

@@ -24,6 +24,7 @@
 #include "esp_system.h"
 
 #include "ws2812.h"
+#include "gammacorrection.h"
 
 #define TAG "MAIN"
 
@@ -32,10 +33,9 @@
 
 void ws2812_task(void *pvParameters) {
 	WS2812 strip(GPIO, NLEDS, 0);
-
 	while(1) {
 		for( int i = 0; i < NLEDS; i++ ) {
-			strip.setPixel( i, 255, 0, 0 );
+			strip.setPixel( i, applyGammaCorrection( (uint8_t)244 ), applyGammaCorrection( (uint8_t)253 ), applyGammaCorrection( (uint8_t)220 ) );
 		}
 		strip.show();
 	}
